@@ -1,0 +1,148 @@
+{
+ "markets": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"markets\":[{\"base\":\"0x28f34DeFd2b4CB48d9eE6d89f2Be4Bc601694c00\",\"baseDecimals\":18,\"contract\":\"0x259fD6559214dd5aD3752322426eA9F9fABEFff4\",\"kind\":\"spot\",\"lotSize\":\"0.01\",\"minQuantity\":\"1\",\"quote\":\"0x9c32F3827A1a99f0cf9B213de8b53eC3d57bb171\",\"quoteDecimals\":18,\"stopRegistry\":\"0xEb97349Aa62A68507c0bE535eD88B0d028a47E1e\",\"symbol\":\"SOMI:USDso\",\"tickSize\":\"0.0001\"},{\"base\":\"0x4e85DC48a70DA1298489d5B6FC2492767d98f384\",\"baseDecimals\":8,\"contract\":\"0x3605f28aA7C50e7441211e77Cb0762d49539326C\",\"kind\":\"spot\",\"lotSize\":\"0.00001\",\"minQuantity\":\"0.0001\",\"quote\":\"0x9c32F3827A1a99f0cf9B213de8b53eC3d57bb171\",\"quoteDecimals\":18,\"stopRegistry\":\"0x53d5B2b0791b3992a1F3b5e0b0277Ee2e08B7aaD\",\"symbol\":\"WBTC:USDso\",\"tickSize\":\"0.1\"},{\"base\":\"0x4d8E02BBfCf205828A8352Af4376b165E123D7b0\",\"baseDecimals\":18,\"contract\":\"0xD180195da5459C7a0DEA188ed61216ec43682b50\",\"kind\":\"spot\",\"lotSize\":\"0.0001\",\"minQuantity\":\"0.001\",\"quote\":\"0x9c32F3827A1a99f0cf9B213de8b53eC3d57bb171\",\"quoteDecimals\":18,\"stopRegistry\":\"0xf822D4Cb94902d667c9650e702aA5f096cc7598F\",\"symbol\":\"WETH:USDso\",\"tickSize\":\"0.01\"}]}\n"
+ },
+ "currencies": {
+  "request": "GET https://stg.api.dreamdex.io/v0/currencies",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"currencies\":[{\"code\":\"SOMI\",\"decimals\":18,\"id\":\"0x28f34DeFd2b4CB48d9eE6d89f2Be4Bc601694c00\",\"name\":\"Somnia Token\"},{\"code\":\"USDso\",\"decimals\":18,\"id\":\"0x9c32F3827A1a99f0cf9B213de8b53eC3d57bb171\",\"name\":\"USDso\"},{\"code\":\"WBTC\",\"decimals\":8,\"id\":\"0x4e85DC48a70DA1298489d5B6FC2492767d98f384\",\"name\":\"Wrapped Bitcoin\"},{\"code\":\"WETH\",\"decimals\":18,\"id\":\"0x4d8E02BBfCf205828A8352Af4376b165E123D7b0\",\"name\":\"Wrapped ETH\"}]}\n"
+ },
+ "orderbooks-single": {
+  "request": "GET https://stg.api.dreamdex.io/v0/orderbooks?symbols=SOMI:USDso",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"orderbooks\":[{\"asks\":[{\"price\":\"0.1798\",\"quantity\":\"1231.7\"}],\"bids\":[{\"price\":\"0.1794\",\"quantity\":\"606.8\"},{\"price\":\"0.1793\",\"quantity\":\"1578.7\"},{\"price\":\"0.12\",\"quantity\":\"1858.33\"},{\"price\":\"0.1\",\"quantity\":\"2\"},{\"price\":\"0.05\",\"quantity\":\"713.6\"}],\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839549997}]}\n"
+ },
+ "orderbooks-comma": {
+  "request": "GET https://stg.api.dreamdex.io/v0/orderbooks?symbols=SOMI:USDso,WETH:USDso",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "contentType": "application/json",
+  "body": "{\"context\":{\"invalid_symbols\":[\"SOMI:USDso,WETH:USDso\"]},\"description\":\"unknown market symbols: SOMI:USDso,WETH:USDso\",\"name\":\"invalid_param\",\"status\":400}\n"
+ },
+ "orderbooks-repeated": {
+  "request": "GET https://stg.api.dreamdex.io/v0/orderbooks?symbols=SOMI:USDso&symbols=WETH:USDso",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"orderbooks\":[{\"asks\":[{\"price\":\"0.1798\",\"quantity\":\"1231.7\"}],\"bids\":[{\"price\":\"0.1794\",\"quantity\":\"606.8\"},{\"price\":\"0.1793\",\"quantity\":\"1578.7\"},{\"price\":\"0.12\",\"quantity\":\"1858.33\"},{\"price\":\"0.1\",\"quantity\":\"2\"},{\"price\":\"0.05\",\"quantity\":\"713.6\"}],\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839553266},{\"asks\":[{\"price\":\"2367.2\",\"quantity\":\"0.0469\"},{\"price\":\"2368.38\",\"quantity\":\"0.0563\"},{\"price\":\"2369.54\",\"quantity\":\"0.0657\"},{\"price\":\"2370.79\",\"quantity\":\"0.0751\"},{\"price\":\"2371.97\",\"quantity\":\"0.0845\"}],\"bids\":[{\"price\":\"2366.74\",\"quantity\":\"0.0518\"},{\"price\":\"2365.53\",\"quantity\":\"0.0636\"},{\"price\":\"2364.32\",\"quantity\":\"0.0742\"},{\"price\":\"2363.2\",\"quantity\":\"0.0848\"},{\"price\":\"2362.02\",\"quantity\":\"0.0954\"},{\"price\":\"2300\",\"quantity\":\"0.0073\"}],\"symbol\":\"WETH:USDso\",\"timestamp\":1792839553266}]}\n"
+ },
+ "orderbooks-bad-symbol": {
+  "request": "GET https://stg.api.dreamdex.io/v0/orderbooks?symbols=SOM:USDso",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "contentType": "application/json",
+  "body": "{\"context\":{\"invalid_symbols\":[\"SOM:USDso\"]},\"description\":\"unknown market symbols: SOM:USDso\",\"name\":\"invalid_param\",\"status\":400}\n"
+ },
+ "orderbook-per-market-path": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/orderbook",
+  "status": 404,
+  "errorNameHeader": null,
+  "contentType": "text/plain; charset=utf-8",
+  "body": "404 page not found\n"
+ },
+ "orderbook-path-form": {
+  "request": "GET https://stg.api.dreamdex.io/v0/orderbooks/SOMI:USDso",
+  "status": 404,
+  "errorNameHeader": null,
+  "contentType": "text/plain; charset=utf-8",
+  "body": "404 page not found\n"
+ },
+ "no-v0-prefix": {
+  "request": "GET https://stg.api.dreamdex.io/markets",
+  "status": 404,
+  "errorNameHeader": null,
+  "contentType": "text/plain; charset=utf-8",
+  "body": "404 page not found\n"
+ },
+ "tickers-all": {
+  "request": "GET https://stg.api.dreamdex.io/v0/tickers",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"symbols\":[{\"close\":\"2367.25\",\"high\":\"2413.75\",\"lastTradeAt\":1792839560779,\"low\":\"2351.49\",\"open\":\"2394.25\",\"symbol\":\"WETH:USDso\",\"timestamp\":1792839568412,\"volume\":\"12.112\"},{\"close\":\"0.1795\",\"high\":\"0.1832\",\"lastTradeAt\":1792839558780,\"low\":\"0.1709\",\"open\":\"0.178\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839567606,\"volume\":\"212695.48\"},{\"close\":\"80564\",\"high\":\"81960.5\",\"lastTradeAt\":1792839561779,\"low\":\"80382.3\",\"open\":\"81591\",\"symbol\":\"WBTC:USDso\",\"timestamp\":1792839568430,\"volume\":\"1.13521\"}]}\n"
+ },
+ "tickers-one-market": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/tickers",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"symbols\":[{\"close\":\"0.1795\",\"high\":\"0.1832\",\"lastTradeAt\":1792839558780,\"low\":\"0.1709\",\"open\":\"0.178\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839567606,\"volume\":\"212695.48\"}]}\n"
+ },
+ "trades": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/trades",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"symbol\":\"SOMI:USDso\",\"trades\":[{\"amount\":\"25\",\"cost\":\"4.4875\",\"id\":\"627189298506150104237:1420399293675660823714\",\"price\":\"0.1795\",\"side\":\"sell\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839569329,\"txHash\":\"0x56fefab5ef4dd72c4248a4ec1a624bfaccfdb1207a9c199fb43c676320ba8535\"},{\"amount\":\"25\",\"cost\":\"4.4875\",\"id\":\"627189298506150104236:1420399293675660823714\",\"price\":\"0.1795\",\"side\":\"sell\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839558780,\"txHash\":\"0x7dd2eff37f7b3eb69dd2b87c34e5cca62fff287f7198dc5cf6751dec8c1e5851\"},{\"amount\":\"25\",\"cost\":\"4.485\",\"id\":\"627189298506150104225:36893488147444452508\",\"price\":\"0.1794\",\"side\":\"sell\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839548779,\"txHash\":\"0x2377586aa318e488278d0e3e1d61a5570981614c112d4f7b9af302d5e3901776\"},{\"amount\":\"25\",\"cost\":\"4.4875\",\"id\":\"627189298506150104224:1420399293675660823690\",\"price\":\"0.1795\",\"side\":\"sell\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839538779,\"txHash\":\"0x5e52f48eae3266c22389a6ac4570136e96dd289cc12276fb62e95ba079a754f8\"},{\"amount\":\"25\",\"cost\":\"4.4875\",\"id\":\"627189298506150104221:1420399293675660823690\",\"price\":\"0.1795\",\"side\":\"sell\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839528780,\"txHash\":\"0xb66eaadd802085a9293c68af51dd36ffe56e4f7fd5a697571d9707872954d64d\"},{\"amount\":\"25\",\"cost\":\"4.4875\",\"id\":\"627189298506150104214:1420399293675660823690\",\"price\":\"0.1795\",\"side\":\"sell\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839518779,\"txHash\":\"0xdaad095166dde11adfdcdbdea0ce4a3712a1daffb9b13dedb64ab2049679af81\"},{\"amount\":\"25\",\"cost\":\"4"
+ },
+ "candles-1m": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/candles?interval=1m",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"candles\":[{\"close\":\"0.1783\",\"high\":\"0.1788\",\"low\":\"0.1783\",\"open\":\"0.1787\",\"timestamp\":1792833600000,\"volume\":\"150\"},{\"close\":\"0.1785\",\"high\":\"0.1785\",\"low\":\"0.1784\",\"open\":\"0.1784\",\"timestamp\":1792833660000,\"volume\":\"125\"},{\"close\":\"0.1784\",\"high\":\"0.1785\",\"low\":\"0.1781\",\"open\":\"0.1785\",\"timestamp\":1792833720000,\"volume\":\"175\"},{\"close\":\"0.1785\",\"high\":\"0.1786\",\"low\":\"0.1784\",\"open\":\"0.1784\",\"timestamp\":1792833780000,\"volume\":\"125\"},{\"close\":\"0.1785\",\"high\":\"0.1786\",\"low\":\"0.1785\",\"open\":\"0.1786\",\"timestamp\":1792833840000,\"volume\":\"150\"},{\"close\":\"0.1782\",\"high\":\"0.1784\",\"low\":\"0.1782\",\"open\":\"0.1784\",\"timestamp\":1792833900000,\"volume\":\"150\"},{\"close\":\"0.1783\",\"high\":\"0.1784\",\"low\":\"0.1782\",\"open\":\"0.1782\",\"timestamp\":1792833960000,\"volume\":\"160\"},{\"close\":\"0.1782\",\"high\":\"0.1783\",\"low\":\"0.1781\",\"open\":\"0.1783\",\"timestamp\":1792834020000,\"volume\":\"150\"},{\"close\":\"0.1781\",\"high\":\"0.1782\",\"low\":\"0.1781\",\"open\":\"0.1781\",\"timestamp\":1792834080000,\"volume\":\"150\"},{\"close\":\"0.178\",\"high\":\"0.1781\",\"low\":\"0.178\",\"open\":\"0.1781\",\"timestamp\":1792834140000,\"volume\":\"150\"},{\"close\":\"0.1782\",\"high\":\"0.1782\",\"low\":\"0.1781\",\"open\":\"0.1781\",\"timestamp\":1792834200000,\"volume\":\"150\"},{\"close\":\"0.1781\",\"high\":\"0.1782\",\"low\":\"0.1781\",\"open\":\"0.1782\",\"timestamp\":1792834260000,\"volume\":\"150\"},{\"close\":\"0.1779\",\"high\":\"0.1779\",\"low\":\"0.1779\",\"open\":\"0.1779\",\"timestamp\":1792834320000,\"volume\":\"150\"},{\"close\":\"0.178\",\"high\":\"0.1781\",\"low\":\"0.178\",\"open\":\"0.1781\",\"timestamp\":1792834380000,\"volume\":\""
+ },
+ "candles-bad-interval": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/candles?interval=banana",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "contentType": "application/json",
+  "body": "{\"description\":\"parameter \\\"interval\\\" in query has an error: value is not one of the allowed values [\\\"1m\\\",\\\"5m\\\",\\\"15m\\\",\\\"1h\\\",\\\"4h\\\",\\\"1d\\\"]\\nSchema:\\n  {\\n    \\\"enum\\\": [\\n      \\\"1m\\\",\\n      \\\"5m\\\",\\n      \\\"15m\\\",\\n      \\\"1h\\\",\\n      \\\"4h\\\",\\n      \\\"1d\\\"\\n    ],\\n    \\\"type\\\": \\\"string\\\"\\n  }\\n\\nValue:\\n  \\\"banana\\\"\\n\",\"name\":\"invalid_param\",\"status\":400}\n"
+ },
+ "volume-default": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/volume",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"baseVolume\":\"1485480.72\",\"baseVolumeRaw\":\"1485480720000000000000000\",\"quoteVolume\":\"275246.410023\",\"quoteVolumeRaw\":\"275246410023000000000000\",\"since\":1792232982745,\"symbol\":\"SOMI:USDso\",\"until\":1792837782745}\n"
+ },
+ "volume-bad-market": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOM:USDso/volume",
+  "status": 404,
+  "errorNameHeader": "market_not_found",
+  "contentType": "application/json",
+  "body": "{\"description\":\"market not found: SOM:USDso\",\"name\":\"market_not_found\",\"status\":404}\n"
+ },
+ "auth-nonce": {
+  "request": "GET https://stg.api.dreamdex.io/v0/auth/nonce",
+  "status": 200,
+  "errorNameHeader": null,
+  "contentType": "application/json",
+  "body": "{\"nonce\":\"000001a16d9122fb8be40faa25fcbc7e7a8fe6416ac2271647061d299fb63e849e1e4783529d3ce5710a280b93e2ec1b8d81a0f531ef4fc7\"}\n"
+ },
+ "private-trades-noauth": {
+  "request": "GET https://stg.api.dreamdex.io/v0/trades",
+  "status": 401,
+  "errorNameHeader": "unauthorized",
+  "contentType": "application/json",
+  "body": "{\"description\":\"authentication required\",\"name\":\"unauthorized\",\"status\":401}\n"
+ },
+ "private-orders-noauth": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/orders",
+  "status": 401,
+  "errorNameHeader": "unauthorized",
+  "contentType": "application/json",
+  "body": "{\"description\":\"authentication required\",\"name\":\"unauthorized\",\"status\":401}\n"
+ },
+ "unknown-route": {
+  "request": "GET https://stg.api.dreamdex.io/v0/definitely-not-a-route",
+  "status": 404,
+  "errorNameHeader": null,
+  "contentType": "text/plain; charset=utf-8",
+  "body": "404 page not found\n"
+ },
+ "volume-until-too-new": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/volume?since=2026-10-24T09%3A59%3A54.096Z&until=2026-10-24T10%3A59%3A54.068Z",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "body": "{\"description\":\"Invalid format for parameter since: error binding string parameter: strconv.ParseInt: parsing \\\"2026-10-24T09:59:54.096Z\\\": invalid syntax\",\"name\":\"invalid_param\",\"status\":400}\n"
+ }
+}

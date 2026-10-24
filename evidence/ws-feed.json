@@ -1,0 +1,6 @@
+[
+ "{\"channel\":\"orderbook\",\"type\":\"subscribed\",\"symbols\":[\"SOMI:USDso\"]}",
+ "{\"channel\":\"orderbook\",\"type\":\"snapshot\",\"symbol\":\"SOMI:USDso\",\"bids\":[{\"price\":\"0.1792\",\"quantity\":\"501.5\"},{\"price\":\"0.1791\",\"quantity\":\"631.8\"},{\"price\":\"0.179\",\"quantity\":\"1579.5\"},{\"price\":\"0.1789\",\"quantity\":\"947.7\"},{\"price\":\"0.12\",\"quantity\":\"1858.33\"},{\"price\":\"0.1\",\"quantity\":\"2\"},{\"price\":\"0.05\",\"quantity\":\"713.6\"}],\"asks\":[{\"price\":\"0.1794\",\"quantity\":\"1041.7\"},{\"price\":\"0.1795\",\"quantity\":\"662.9\"},{\"price\":\"0.1796\",\"quantity\":\"757.6\"},{\"price\":\"0.1797\",\"quantity\":\"852.3\"}],\"timestamp\":1792839999344}",
+ "{\"type\":\"error\",\"errorName\":\"unknown_channel\",\"message\":\"unknown channel: nope-channel\"}",
+ "{\"channel\":\"orderbook\",\"type\":\"update\",\"symbol\":\"SOMI:USDso\",\"bids\":[{\"price\":\"0.1792\",\"quantity\":\"476.5\"}],\"timestamp\":1792840008965}"
+]

@@ -1,0 +1,10 @@
+{
+  "marginBank": "0x478769E1177C0773c43A593DCCc4Ad15F15F1394",
+  "collateralToken": "0xed7993A74dAe1e6656B704A424DcD8711aAf4F72",
+  "perpPoolFactory": "0xE631fAEE547baeE07353E290f0562ea67d856560",
+  "liquidationEngine": "0xA66d3C24Ad4a389d863846905D8173e1017e9F4D",
+  "insuranceFund": "0x50826894D47C6D4f3BeA38BFDC7Dc5c5be171b80",
+  "feeRecipient": "0xd58596620Ee6951B2958a931949e4ff7ce6222be",
+  "maxLeverageLimit": "20",
+  "fullyWired": true
+}

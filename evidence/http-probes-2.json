@@ -1,0 +1,44 @@
+{
+ "tickers-bad-symbol": {
+  "request": "GET https://stg.api.dreamdex.io/v0/tickers?symbols=SOM:USDso",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "body": "{\"context\":{\"invalid_symbols\":[\"SOM:USDso\"]},\"description\":\"unknown market symbols: SOM:USDso\",\"name\":\"invalid_param\",\"status\":400}\n"
+ },
+ "tickers-comma": {
+  "request": "GET https://stg.api.dreamdex.io/v0/tickers?symbols=SOMI:USDso,WETH:USDso",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "body": "{\"context\":{\"invalid_symbols\":[\"SOMI:USDso,WETH:USDso\"]},\"description\":\"unknown market symbols: SOMI:USDso,WETH:USDso\",\"name\":\"invalid_param\",\"status\":400}\n"
+ },
+ "tickers-repeated": {
+  "request": "GET https://stg.api.dreamdex.io/v0/tickers?symbols=SOMI:USDso&symbols=WETH:USDso",
+  "status": 200,
+  "errorNameHeader": null,
+  "body": "{\"symbols\":[{\"close\":\"0.1798\",\"high\":\"0.1832\",\"lastTradeAt\":1792839619029,\"low\":\"0.1709\",\"open\":\"0.1777\",\"symbol\":\"SOMI:USDso\",\"timestamp\":1792839625874,\"volume\":\"212695.48\"},{\"close\":\"2367.01\",\"high\":\"2413.75\",\"lastTradeAt\":1792839621029,\"low\":\"2351.49\",\"open\":\"2390.05\",\"symbol\":\"WETH:USDso\",\"timestamp\":1792839625894,\"volume\":\"12.1136\"}]}\n"
+ },
+ "volume-epoch-valid": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/volume?since=1792834164904&until=1792837764904",
+  "status": 200,
+  "errorNameHeader": null,
+  "body": "{\"baseVolume\":\"8850\",\"baseVolumeRaw\":\"8850000000000000000000\",\"quoteVolume\":\"1585.0225\",\"quoteVolumeRaw\":\"1585022500000000000000\",\"since\":1792834164904,\"symbol\":\"SOMI:USDso\",\"until\":1792837764904}\n"
+ },
+ "volume-epoch-until-now": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/volume?since=1792836024904&until=1792839624904",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "body": "{\"description\":\"until must be at least 30 minutes in the past\",\"name\":\"invalid_param\",\"status\":400}\n"
+ },
+ "volume-seconds-valid": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/volume?since=1792834164&until=1792837764",
+  "status": 200,
+  "errorNameHeader": null,
+  "body": "{\"baseVolume\":\"0\",\"baseVolumeRaw\":\"0\",\"quoteVolume\":\"0\",\"quoteVolumeRaw\":\"0\",\"since\":1792834164,\"symbol\":\"SOMI:USDso\",\"until\":1792837764}\n"
+ },
+ "candles-7d-interval": {
+  "request": "GET https://stg.api.dreamdex.io/v0/markets/SOMI:USDso/candles?interval=2h",
+  "status": 400,
+  "errorNameHeader": "invalid_param",
+  "body": "{\"description\":\"parameter \\\"interval\\\" in query has an error: value is not one of the allowed values [\\\"1m\\\",\\\"5m\\\",\\\"15m\\\",\\\"1h\\\",\\\"4h\\\",\\\"1d\\\"]\\nSchema:\\n  {\\n    \\\"enum\\\": [\\n      \\\"1m\\\",\\n      \\\"5m\\\",\\n      \\\"15m\\\",\\n      \\\"1h\\\",\\n      \\\"4h\\\",\\n      \\\"1d\\\"\\n    ],\\n    \\\"type\\\": \\\"string\\\"\\n  }\\n\\nValue:\\n  \\\"2h\\\"\\n\",\"name\":\"invalid_param\",\"status\":400}\n"
+ }
+}

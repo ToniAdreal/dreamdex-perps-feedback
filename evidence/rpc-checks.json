@@ -1,0 +1,46 @@
+{
+  "chainId": {
+    "ok": true,
+    "out": {
+      "status": 200,
+      "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0xc4cf\"}"
+    }
+  },
+  "blockNumber": {
+    "ok": true,
+    "out": {
+      "status": 200,
+      "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x1e64e8f\"}"
+    }
+  },
+  "getCode": {
+    "MarginBank": {
+      "address": "0x478769E1177C0773c43A593DCCc4Ad15F15F1394",
+      "codeLengthBytes": 176
+    },
+    "Collateral_USDso": {
+      "address": "0xed7993A74dAe1e6656B704A424DcD8711aAf4F72",
+      "codeLengthBytes": 2840
+    },
+    "PerpPoolFactory": {
+      "address": "0xE631fAEE547baeE07353E290f0562ea67d856560",
+      "codeLengthBytes": 176
+    },
+    "LiquidationEngine": {
+      "address": "0xA66d3C24Ad4a389d863846905D8173e1017e9F4D",
+      "codeLengthBytes": 176
+    },
+    "InsuranceFund": {
+      "address": "0x50826894D47C6D4f3BeA38BFDC7Dc5c5be171b80",
+      "codeLengthBytes": 176
+    },
+    "VoucherDistributor": {
+      "address": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+      "codeLengthBytes": 176
+    },
+    "OperatorPermissionsRegistry": {
+      "address": "0x6B2FbfeD328FF5F20C0BE7D3C3437613aFFE8D3a",
+      "codeLengthBytes": 176
+    }
+  }
+}

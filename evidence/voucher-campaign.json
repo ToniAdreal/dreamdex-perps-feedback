@@ -1,0 +1,14 @@
+{
+ "granter": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+ "config": {
+  "marginBank": "0x478769E1177C0773c43A593DCCc4Ad15F15F1394",
+  "collateralToken": "0xed7993A74dAe1e6656B704A424DcD8711aAf4F72",
+  "grantAmount": "1000000000000000000000",
+  "expiryDuration": "1209600",
+  "campaignStart": "1790553600",
+  "campaignEnd": "1798477478"
+ },
+ "budgetRemaining": "366970000000000000000000000",
+ "leverageCap": "20",
+ "headTimestamp": "1792839430"
+}
